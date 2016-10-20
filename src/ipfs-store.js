@@ -21,7 +21,8 @@ module.exports = class IPFSStorageEndpoint {
 
   // Set up some options for catch
   init () {
-    this.ipfs = new IpfsApi('localhost', '5001')
+    const port = parseInt(window.location.toString().split('#')[1] || '5001', 10)
+    this.ipfs = new IpfsApi('localhost', port)
     this.orbitdb = new OrbitDB(this.ipfs, 'mirador-annotations')
     this.db = this.orbitdb.docstore('hello')
     this.db.events.on('data', (dbname, ev) => {

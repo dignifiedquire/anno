@@ -1,0 +1,22 @@
+{
+  "name": "anno",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "budo index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ipfs-api": "github:haadcode/js-ipfs-api",
+    "lodash.find": "^4.6.0",
+    "lodash.findindex": "^4.6.0",
+    "orbit-db": "^0.13.2"
+  },
+  "devDependencies": {
+    "budo": "^9.2.1"
+  }
+}

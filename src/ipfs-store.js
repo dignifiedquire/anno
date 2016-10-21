@@ -1,9 +1,21 @@
 'use strict'
 
-const OrbitDB = require('orbit-db')
 const findIndex = require('lodash.findindex')
 
-const {jQuery, IpfsApi} = window
+const {jQuery, OrbitDB, IpfsApi} = window
+const port = parseInt(window.location.toString().split('#')[1] || '5001', 10)
+// const ipfs = new IpfsApi('localhost', port)
+// const orbitdb = new OrbitDB(ipfs, 'mirador-annotations')
+// const db = orbitdb.docstore('hello')
+
+// db.events.on('data', (name, ev) => {
+//   console.log('data', name, ev)
+// })
+
+// let i = 0
+// setInterval(() => {
+//   db.put({_id: ++i, hello: 'world'})
+// }, 1000)
 
 module.exports = class IPFSStorageEndpoint {
   constructor (options) {
@@ -21,13 +33,15 @@ module.exports = class IPFSStorageEndpoint {
 
   // Set up some options for catch
   init () {
-    const port = parseInt(window.location.toString().split('#')[1] || '5001', 10)
     this.ipfs = new IpfsApi('localhost', port)
     this.orbitdb = new OrbitDB(this.ipfs, 'mirador-annotations')
-    this.db = this.orbitdb.docstore('hello')
-    this.db.events.on('data', (dbname, ev) => {
-      // this.db.sync(ev.hash).catch((e) => console.error(e.stack))
+    this.db = this.orbitdb.docstore('world')
+
+    this.db.events.on('data', (dbname, event) => {
+      console.log('data', dbname, event)
+      // TODO: refresh ui
     })
+
     this.ready = new Promise((resolve, reject) => {
       this.db.events.on('ready', () => {
         console.log('synchronized')

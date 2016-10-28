@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "budo index.js",
+    "server": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,9 +13,10 @@
   "license": "MIT",
   "dependencies": {
     "ipfs-api": "github:haadcode/js-ipfs-api",
+    "ipfs-daemon": "^0.1.0",
     "lodash.find": "^4.6.0",
     "lodash.findindex": "^4.6.0",
-    "orbit-db": "github:dignifiedquire/orbit-db"
+    "orbit-db": "^0.13.5"
   },
   "devDependencies": {
     "budo": "^9.2.1"

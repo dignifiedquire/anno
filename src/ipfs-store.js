@@ -1,9 +1,9 @@
 'use strict'
 
 const findIndex = require('lodash.findindex')
-
 const {jQuery, OrbitDB, IpfsApi} = window
 const port = parseInt(window.location.toString().split('#')[1] || '5001', 10)
+
 // const ipfs = new IpfsApi('localhost', port)
 // const orbitdb = new OrbitDB(ipfs, 'mirador-annotations')
 // const db = orbitdb.docstore('hello')

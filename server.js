@@ -16,8 +16,12 @@ ipfs({
       'Access-Control-Allow-Credentials': ['true'] // 'true' || 'false'
     }
   }
-}).then(() => {
-  console.log('daemon running')
-}).catch((err) => {
-  throw err
 })
+  .then((res) => res.ipfs.id())
+  .then((id) => {
+    console.log('daemon running with id %s', id.id)
+    id.addresses.forEach((addr) => console.log('\t%s', addr))
+  })
+  .catch((err) => {
+    throw err
+  })

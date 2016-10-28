@@ -39,7 +39,7 @@ module.exports = class IPFSStorageEndpoint {
 
     this.db.events.on('data', (dbname, event) => {
       console.log('data', dbname, event)
-      // TODO: refresh ui
+      this.eventEmitter.publish(`updateAnnotationList.${this.windowID}`)
     })
 
     this.ready = new Promise((resolve, reject) => {
